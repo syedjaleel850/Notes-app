@@ -34,7 +34,7 @@ const Notes = () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get("http://localhost:8080/notes", {
+        const response = await axios.get("https://notes-app-1exy.onrender.com/notes", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setNotes(response.data);
@@ -65,7 +65,7 @@ const Notes = () => {
     setIsSubmitting(true);
     try {
       const response = await axios.post(
-        "http://localhost:8080/notes",
+        "https://notes-app-1exy.onrender.com/notes",
         { title: title.trim(), description: description.trim() },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -83,7 +83,7 @@ const Notes = () => {
     if (!window.confirm("Are you sure you want to delete this note?")) return;
 
     try {
-      await axios.delete(`http://localhost:8080/notes/${noteId}`, {
+      await axios.delete(`https://notes-app-1exy.onrender.com/notes/${noteId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes((prevNotes) => prevNotes.filter((note) => note._id !== noteId));
@@ -117,7 +117,7 @@ const Notes = () => {
     setIsEditingSubmitting(true);
     try {
       const response = await axios.put(
-        `http://localhost:8080/notes/${editingNoteId}`,
+        `https://notes-app-1exy.onrender.com/notes/${editingNoteId}`,
         {
           title: editTitle.trim(),
           description: editDescription.trim(),

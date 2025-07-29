@@ -32,7 +32,7 @@ const Signup = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:8080/signup", {
+      const res = await axios.post("https://notes-app-1exy.onrender.com/signup", {
         name: name.trim(),
         email: email.trim().toLowerCase(),
         password: password.trim(),
@@ -58,7 +58,7 @@ const Signup = () => {
     setIsLoading(true);
     
     try {
-        const res = await axios.post("http://localhost:8080/verify-otp", {
+        const res = await axios.post("https://notes-app-1exy.onrender.com/verify-otp", {
             email: email.trim().toLowerCase(),
             otp: otp.trim(),
         });
@@ -146,7 +146,7 @@ const Signup = () => {
           )}
         </div>
         <div className='h-full w-1/2 hidden md:block'>
-          <img className="h-full w-full object-cover rounded-xl" src='http://localhost:8080/background.jpg' alt="A person writing notes" />
+          <img className="h-full w-full object-cover rounded-xl" src='https://notes-app-1exy.onrender.com/background.jpg' alt="A person writing notes" />
         </div>
       </div>
     </div>

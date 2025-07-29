@@ -24,7 +24,7 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:8080/login", {
+      const res = await axios.post("https://notes-app-1exy.onrender.com/login", {
         email: trimmedEmail,
         password: trimmedPassword,
       });
@@ -104,7 +104,7 @@ const Login = () => {
           
           <img
             className="h-full w-full object-cover rounded-xl"
-            src='http://localhost:8080/background.jpg'
+            src='https://notes-app-1exy.onrender.com/background.jpg'
             alt="A person writing notes"
           />
         </div>
