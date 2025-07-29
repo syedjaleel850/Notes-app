@@ -22,7 +22,6 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"], 
   credentials: true
 }));
-require('dotenv').config(); // Load variables from .env
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
