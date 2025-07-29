@@ -23,12 +23,11 @@ app.use(cors({
   credentials: true
 }));
 
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));
+const mongoURI = process.env.MONGO_URL;
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch((err) => console.error(err));
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
