@@ -148,7 +148,6 @@ app.post('/login', async (req, res) => {
   }
 });
 
-});
 app.delete('/notes/:id', authenticateToken, async (req, res) => {
   try {
     const noteId = req.params.id;
