@@ -22,10 +22,16 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"], 
   credentials: true
 }));
-mongoose.connect('mongodb://localhost:27017/note')
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+require('dotenv').config(); // Load variables from .env
 
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('MongoDB connection error:', err));
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
