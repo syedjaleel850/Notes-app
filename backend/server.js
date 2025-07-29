@@ -17,7 +17,7 @@ const port = 8080;
 app.use(express.json());
 app.use(express.static('./src/assets'));
 app.use(cors({
-  origin: "http://localhost:5175", 
+  origin: "https://notes-app-1exy.onrender.com/", 
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"], 
   credentials: true
