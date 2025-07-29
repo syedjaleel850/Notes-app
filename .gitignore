@@ -1,0 +1,54 @@
+# Node.js dependencies
+**/node_modules/
+
+# Local environment files
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output (if you have frontend build output directories)
+frontend/build/
+frontend/dist/
+
+# Temporary / cache files
+*.cache
+.pnpm-debug.log
+*.pid
+*.seed
+*.tsbuildinfo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Misc
+*.swp
+*~
+.project
+.metadata
+*.bak
+*.tmp
+
+# coverage folder (if you use testing coverage tools)
+coverage/
+
+# npm package-lock and yarn lock is usually committed
+# but if you want to ignore (not recommend):
+# package-lock.json
+# yarn.lock
+
