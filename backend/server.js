@@ -123,8 +123,6 @@ app.post('/verify-otp', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
-
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -148,6 +146,13 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.get("/test", (req, res) => {
+  console.log("✅ /test route was successfully reached!");
+  res.send("Hello from the backend!");
+});
+
+
+
 app.delete('/notes/:id', authenticateToken, async (req, res) => {
   try {
     const noteId = req.params.id;
@@ -165,12 +170,6 @@ app.delete('/notes/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Failed to delete note' });
   }
 });
-
-app.get("/test", (req, res) => {
-  console.log("✅ /test route was successfully reached!");
-  res.send("Hello from the backend!");
-});
-
 
 app.post('/notes', authenticateToken, async (req, res) => {
   try {
