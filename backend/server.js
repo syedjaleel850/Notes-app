@@ -24,8 +24,6 @@ app.use(cors({
 }));
 require('dotenv').config(); // Load variables from .env
 
-const mongoose = require('mongoose');
-
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
