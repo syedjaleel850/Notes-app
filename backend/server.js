@@ -126,32 +126,28 @@ app.post('/verify-otp', async (req, res) => {
 
 
 app.post('/login', async (req, res) => {
-    console.log("Secret used for SIGNING token in /login:", process.env.JWT_SECRET); // <-- ADD THIS LINE
-  console.log("Login request body:", req.body);
   try {
     const { email, password } = req.body;
+    if (!email || !password) return res.status(400).json({ error: 'Email and password required' });
 
-    if (!email || !password)
-      return res.status(400).json({ error: 'Email and password required' });
-
-    const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ error: 'Invalid email or password' });
+    // Find user who is verified ONLY
+    const user = await User.findOne({ email, isVerified: true });
+    if (!user) return res.status(400).json({ error: 'Invalid email or password or email not verified' });
 
     const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword)
-      return res.status(400).json({ error: 'Invalid email or password' });
+    if (!validPassword) return res.status(400).json({ error: 'Invalid email or password' });
 
     const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, {
       expiresIn: '1d',
     });
-    console.log("1. TOKEN CREATED ON BACKEND:", token); // <-- ADD THIS LINE
-
 
     res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
 });
 app.delete('/notes/:id', authenticateToken, async (req, res) => {
   try {
